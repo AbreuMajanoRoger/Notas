@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityAddNotes">
+
+
+<TextView
+    android:id="@+id/addNotesHeading"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_marginTop="16dp"
+    android:textColor="@color/black"
+    android:text="Agregar tarea"
+    android:textSize="24sp"/>
+
+    <ImageView
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_check_24"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/addNotesHeading"
+        android:layout_marginEnd="10dp"/>
+    
+    <EditText
+        android:id="@+id/titleEditText"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="introduce titulo"
+        android:padding="12dp"
+        android:textSize="24sp"
+        android:layout_below="@id/addNotesHeading"
+        android:background="@drawable/light_green_borde"
+        android:layout_marginTop="12dp"/>
+
+
+    <EditText
+        android:id="@+id/contentEditText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:hint="Descripcion"
+        android:gravity="top"
+        android:padding="12dp"
+        android:textSize="18sp"
+        android:background="@drawable/light_green_borde"
+        android:layout_below="@id/titleEditText"
+        android:layout_marginTop="20dp"
+        />
+
+
+
+
+
+
+
+    
+</RelativeLayout>
