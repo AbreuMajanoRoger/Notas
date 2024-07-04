@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper
 class NotesDataBaseHelper (context: Context): SQLiteOpenHelper(context,
     DATABASE_NAME, null,
     DATABASE_VERSION){
-
     companion object{
         private const val DATABASE_NAME="notesapp.db"
         private const val DATABASE_VERSION =1
@@ -19,13 +18,13 @@ class NotesDataBaseHelper (context: Context): SQLiteOpenHelper(context,
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
-        val createTableQuerry = "CREATE TABLE $TABLE_NAME($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_TITLE TEXT,$COLUMN_CONTENT TEXT)"
-        db?.execSQL(createTableQuerry)
+        val createTableQuery = "CREATE TABLE $TABLE_NAME($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_TITLE TEXT,$COLUMN_CONTENT TEXT)"
+        db?.execSQL(createTableQuery)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        var dropTableQuerry ="DROP TABLE IF EXISTS $TABLE_NAME"
-        db?.execSQL(dropTableQuerry)
+        var dropTableQuery ="DROP TABLE IF EXISTS $TABLE_NAME"
+        db?.execSQL(dropTableQuery)
         onCreate(db)
     }
 
@@ -68,7 +67,7 @@ class NotesDataBaseHelper (context: Context): SQLiteOpenHelper(context,
             put(COLUMN_CONTENT, note.content)
         }
 
-        val whereClause = "$COLUMN_ID"
+        val whereClause = "$COLUMN_ID =?"
         val  whereArgs = arrayOf(note.id.toString())
         db.update(TABLE_NAME, values, whereClause, whereArgs)
         db.close()
@@ -77,8 +76,8 @@ class NotesDataBaseHelper (context: Context): SQLiteOpenHelper(context,
 
     fun getNoteById(noteId : Int): Note{
         val db = readableDatabase
-        val querry = "SELECT *FROM $TABLE_NAME WHERE $COLUMN_ID = $noteId"
-        val cursor = db.rawQuery(querry, null)
+        val query = "SELECT *FROM $TABLE_NAME WHERE $COLUMN_ID = $noteId"
+        val cursor = db.rawQuery(query, null)
         cursor.moveToFirst()
 
         val id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID))
@@ -88,16 +87,16 @@ class NotesDataBaseHelper (context: Context): SQLiteOpenHelper(context,
         cursor.close()
         db.close()
         return Note(id, title, content)
-    }
+         }
 
 
-
-
-
-
-
-
-
+            fun deleteNote(noteId: Int){
+            val db = writableDatabase
+                val whereClause = "$COLUMN_ID = ?"
+                val whereArgs = arrayOf(noteId.toString())
+                db.delete(TABLE_NAME, whereClause, whereArgs)
+                db.close()
+            }
 
 
 }

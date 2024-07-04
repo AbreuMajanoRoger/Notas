@@ -1,10 +1,9 @@
 package com.example.myapplication
-
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.myapplication.databinding.ActivityAddNotesBinding
-import com.example.myapplication.databinding.ActivityMainBinding
+
 
 class ActivityAddNotes : AppCompatActivity() {
 

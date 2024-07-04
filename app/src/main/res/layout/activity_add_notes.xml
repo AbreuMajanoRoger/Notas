@@ -34,7 +34,7 @@
         android:padding="12dp"
         android:textSize="24sp"
         android:layout_below="@id/addNotesHeading"
-        android:background="@drawable/light_green_borde"
+        android:background="@drawable/light_grey_borde"
         android:layout_marginTop="12dp"/>
 
 
@@ -46,7 +46,7 @@
         android:gravity="top"
         android:padding="12dp"
         android:textSize="18sp"
-        android:background="@drawable/light_green_borde"
+        android:background="@drawable/light_grey_borde"
         android:layout_below="@id/titleEditText"
         android:layout_marginTop="20dp"
         />
